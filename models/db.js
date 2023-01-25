@@ -1,8 +1,7 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('dados', 'root', 'aluno', {
+const sequelize = new Sequelize('dados', 'root', 'mysql.123456', {
     host: "localhost",
-    port: 3308,
     dialect: "mysql",
     query:{raw:true}
 });

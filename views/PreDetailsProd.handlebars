@@ -5,6 +5,7 @@
 <style>
        
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@200&family=Outfit:wght@200;300&family=Raleway&family=Varela+Round&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -26,11 +27,13 @@ a{
     color: rgb(75, 150, 75);
     font-size: 15px;
 }
+
 .logo{
     margin-left: 20px;
     width: 80px;
     height: 80px;
 }
+
 .header{
     background-color: white;
     display: flex;
@@ -39,18 +42,23 @@ a{
     align-items: center;
     padding: 20px;
 }
+
 .menu{
     display: flex;
 }
+
 .menu li{
     margin-left: 20px;
 }
+
 .menu li a{
     display: block;
     padding: 5px;
     color: #2A7C6F;
     transition: 0.2s;
+
 }
+
 .a-li:hover{
     background-color: #73c2b5;
     border-radius: 40px;
@@ -71,6 +79,7 @@ a{
     margin-right: 30px;
     color: #2a7c6f;
 }
+
 #qtd-car{
     width: 14px;
     height: 14px;
@@ -88,6 +97,7 @@ a{
     top: 2.2rem;
     right: 2.7rem;
 }
+
 #cycloTech{
     color: #2a7c4c;
     font-size: 30px;
@@ -101,10 +111,12 @@ a{
     color: #2A7C6F;
     font-size: 25px;
 }
+
 .rodape #fim{
 margin-top: 40px;
 font-size: 15px;
 }
+
 #conteudo {
     max-width: 450px;
     justify-content: center;
@@ -159,7 +171,9 @@ button:hover {
     color: #2a7c6f;
     transition: all .2s ease-out;
 }
+
 </style>
+</head>
 
  <header class="header">
         <img class="logo" src="./img/logo (1).png">
@@ -182,15 +196,20 @@ button:hover {
 
 <div id="conteudo">
         <header>
-            <h1>Atualizar Conta</h1>
+            <h1>Dados do Produto</h1>
         </header>
         <div id="forms">
-   <form action="/atualizarcadastro" method="post" id="form">
+            <form action="/detalhesProd" method="post" id="form">
                 <div class="inputNome">
-                    <input type="text" name="email" placeholder="Digite seu email" required="required">
+                    <input type="text" name="nome" placeholder="informe o nome do produto" required>
                 </div>
-               <a href="/atualizarcadastro"><button type="submit" id="button">Atualizar</button></a> 
-               </form>
+               <a href="/detalhesProd"><button type="submit" id="button">Acessar</button></a> 
+            </form>
             <a href="/minhaconta" id="voltar"><i class="fa fa-arrow-circle-left"></i> Voltar</a>
         </div>
     </div>
+
+       <footer class="rodape">
+<p>CYCLO TECH</p>
+<p id="fim">©2022 por CYCLO TECH.</p> 
+</footer>

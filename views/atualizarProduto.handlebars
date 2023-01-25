@@ -33,26 +33,32 @@
 
       <div class="cx-form-log">
 
-<form action="/cadastro" method="POST">
+<form action="atualizadoProd" method="POST">
 
         <div id="form-cc">
-            <h2 id="tit-log">Criar Conta</h2>
-
-            <label>Nome: </label>
-            <input type="text" name="name" required="required"><br>
-
-            <label>E-mail: </label>
-            <input type="text" name="email" required="required"><br>
+            <h2 id="tit-log">Atualizar Produto</h2>
             
-            <label>Senha: </label>
-            <input type="password" name="password" required="required" minlengt="8" maxlength="15"><br>
+            <label>Novo Nome: </label>
+            <input type="text" name="nome" value="{{produtos.nome}}" required="required"><br>
+
+            <label>Nova Marca: </label>
+            <input type="text" name="marca" value="{{produtos.marca}}" required="required"><br>
+
+            <label>Nova Cor: </label>
+            <input type="text" name="cor" value="{{produtos.cor}}" required="required"><br>
+
+            <label>Novo Preço: </label>
+            <input type="text" name="Preco" value="{{produtos.Preco}}" required="required"><br>
+            
+            <label>Nova Descricao: </label>
+            <input type="text" name="descricao" value="{{produtos.descricao}}" required="required" minlengt="8" maxlength="15"><br>
             
             <div id="bt-env-log">
-            <button type="submit">Criar</button> 
+            <button type="submit">Confirmar</button> 
             </div>
 
 </form>
-            <a href="/login" id="voltar"><i class="fa fa-arrow-circle-left"></i> Voltar</a>
+            <a href="/atualizadoProd" id="voltar"><i class="fa fa-arrow-circle-left"></i> Voltar</a>
 
             </div>
             </div>

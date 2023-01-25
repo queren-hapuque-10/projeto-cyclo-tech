@@ -31,28 +31,24 @@ app.use(bodyParser.json());
 //arquivos estáticos
 app.use(express.static(path.join(__dirname,"public")));
 
-//CRUD DO USER
+//rota do form cadastro do cliente
 app.get('/cadastro',(req,res)=>{
     res.render('form');
 });
 
+//login
 app.get('/login',(req,res)=>{
     res.render('login');
 });
 
+//pagina principal/inicial da loja
 app.get('/',(req,res)=>{
     res.render('home');
 });
 
-    app.get('/cadastro',(req,res)=>{
-        res.render('form');
-       
-    });
-    
-    app.get('/login',(req,res)=>{
-        res.render('login');
-    });
-    
+
+//-- -- CRUD DO USER
+
         app.post('/cadastro',(req,res)=>{
         User.create({
         name: req.body.name,
@@ -65,11 +61,13 @@ app.get('/',(req,res)=>{
        });
     });
 
+    //opções de criar, ler, atualizar e deletar 
         app.get('/minhaconta',(req,res)=>{
         res.render('opcao');
         
         });
-           
+       
+//Ler dados do user        
         app.get('/detalhes',(req,res)=>{
             res.render('preDetails');
         });
@@ -81,6 +79,7 @@ app.get('/',(req,res)=>{
             
         });
 
+//Deletar user
         app.get('/deletarusuario',(req,res)=>{
             res.render('deleteUser');
         });
@@ -90,6 +89,7 @@ app.get('/',(req,res)=>{
             res.send("Conta deletada com sucesso!");
         });
 
+// -- Atualizar User        
         app.get('/atualizarcadastro',(req,res)=>{
             res.render('preEdit');      
 });
@@ -107,11 +107,10 @@ app.get('/',(req,res)=>{
         password: req.body.password
     },
     {where:{'email':req.body.email}},
-     res.send("Atualizado com sucesso"))
+     res.send("Atualizado com sucesso"));
 });
 
 //Rotas das paginas
-
 app.get('/pagprodutos',(req,res)=>{
     CadProduto.findAll().then((produtos)=>{
         res.render('pagprod',{produtos:produtos});
@@ -129,8 +128,8 @@ app.get('/sobre',(req,res)=>{
     res.render('sobre');
 }); 
 
-// ----> CRUD CADASTRO RECYCLE
 
+// ----> CRUD CADASTRO RECYCLE
 
 app.post('/recycle',(req,res)=>{
     CadRecycle.create({
@@ -165,12 +164,12 @@ app.post('/recycle',(req,res)=>{
     });
 
     app.get('/atualizarRec',(req,res)=>{
-        res.render('preEdit');      
+        res.render('preEditRec');      
 });
 
 
 app.post('/atualizarRec',(req,res)=>{
- CadRecycle.findOne({where:{'cpf':req.body.cpf}}).then((cliente)=>{
+ CadRecycle.findOne({where:{'email':req.body.email}}).then((cliente)=>{
     res.render('atualizarRec',{cliente:cliente});
 });
 });
@@ -181,10 +180,8 @@ app.post('/atualizado',(req,res)=>{
         cpf: req.body.cpf,
         email: req.body.email,
         descricao: req.body.descricao,
-
-       
     },
-        {where:{'cpf': req.body.cpf}},
+        {where:{'email': req.body.email}},
         res.send("Atualizado com sucesso")
 )})
 
@@ -209,37 +206,50 @@ app.post('/cadproduto',(req,res)=>{
    });
 });
 
+// detalhes do produto
+app.get('/detalhesProd',(req,res)=>{
+    res.render('PreDetailsProd');
+});
 
+app.post("/detalhesProd",(req,res)=>{
+    CadProduto.findOne({where:{'nome':req.body.nome}}).then((produtos)=>{
+        res.render('detailsProduto',{produtos:produtos});
+    }); 
+});
 
 // excluir produto 
-app.get('/deleteProduto/id',(req,res)=>{
-   CadProduto.destroy({
-       where:{'id': req.params.id}}).then(()=>{
-           res.send("<h2 style='margin: 12rem 40rem;'>PRODUTO DELETADO COM SUCESSO!!</h2>")
-       });     
+
+app.get('/deletarProd',(req,res)=>{
+    res.render('deleteProduto');
+});
+
+app.post('/deletarProd',(req,res)=>{
+    CadProduto.destroy({where:{'nome':req.body.nome}})
+    res.send("Produto deletado com sucesso!");
 });
 
 
-//editar
-app.get('/editarProduto/:id',(req,res)=>{
-       CadProduto.findOne({where:{'id':req.params.id}}).then((produto)=>{
-                   res.render('editarProduto',{produto: produto});
-               });
-             
-           });
-    
+//Atualizar Produto
+   app.get('/atualizarProd',(req,res)=>{
+    res.render('preEditProd');      
+});
 
-app.post('/editarProduto/:id',(req,res)=>{
-       Produto.update({
+app.post('/atualizarProd',(req,res)=>{
+CadProduto.findOne({where:{'nome':req.body.nome}}).then((produtos)=>{
+res.render('atualizarProduto',{produtos:produtos});
+});
+});
+
+app.post('/atualizadoProd',(req,res)=>{
+    CadProduto.update({
         nome: req.body.nome,
         marca: req.body.marca,
         cor: req.body.cor,
         Preco: req.body.Preco,
         descricao: req.body.descricao
        },
-          {where:{id: req.params.id}},
-          res.send("<h1 style='margin: 12rem 40rem;'>PRODUTO EDITADO COM SUCESSO!!</H1>")
-           
-   )})
+{where:{'nome':req.body.nome}},
+res.send("Atualizado com sucesso!!"));
+});
 
 app.listen(port);

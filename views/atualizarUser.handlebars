@@ -39,13 +39,13 @@
             <h2 id="tit-log">Atualizar Conta</h2>
 
             <label>Novo Nome: </label>
-            <input type="text" name="name" required="required"><br>
+            <input type="text" name="name" value="{{cliente.name}}" required="required"><br>
 
             <label>Novo E-mail: </label>
-            <input type="text" name="email" required="required"><br>
+            <input type="text" name="email" value="{{cliente.email}}" required="required"><br>
             
             <label> Nova Senha: </label>
-            <input type="password" name="password" required="required" minlengt="8" maxlength="15"><br>
+            <input type="password" name="password" value="{{cliente.password}}" required="required" minlengt="8" maxlength="15"><br>
             
             <div id="bt-env-log">
             <button type="submit">Confirmar</button> 
