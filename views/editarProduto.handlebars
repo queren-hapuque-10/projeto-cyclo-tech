@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+
+    body{
+        background-color:  rgb(189, 233, 226);
+        width: 100%;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        color: #2A7C6F;
+        font-size: 40px;
+        font-family: 'Manjari', sans-serif;
+    }
+         #form-cc label{
+            margin-left: 15%;
+            font-weight: bold;
+        }
+        #form-cc input{
+            border-radius: 30px;
+            border-color: #2A7C6F;
+        }
+        
+    #bt-cad-prod button{
+            background-color: #2A7C6F;
+            color: #fff;
+            border-radius: 10px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            font-weight: 700;
+            width: 70%;
+            margin-left: 15%;
+            border-width: 0;
+        }
+#bt-cad-prod button{
+    margin-bottom: 15px;
+}
+        #bt-cad-prod button:hover{
+            cursor: pointer;
+        }
+        #form-cc{
+    background-color: #ffffff;
+    width: 500px;
+    height: 550px;
+    margin: 12rem auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-size: 18px;
+    border-radius: 10px;
+}
+         #descProd{
+            margin-left: 15%;
+            margin-bottom: 10px;
+            margin-top: 5px;
+            border: 1px solid #2A7C6F;
+            padding: 7px;
+            width: 70%;
+            text-align: left;
+            resize: none;
+            transition: 0.1s;
+            outline: none;
+            border-radius: 10px;
+        }
+        #tit-log{
+            text-align: center;
+        }
+</style>
+</head>
+<body>
+
+    <div class="cx-form-log" >
+        <form action="/editarProduto" method="post">
+                <div id="form-cc" class="form-cad-prod">
+                    <h2 id="tit-log">Cadastro de Produtos</h2>
+        
+                    <label>Novo nome Produto: </label>
+                    <input type="text" name="nome" required="required"><br>
+        
+                    <label>Nova Cor: </label>
+                    <input type="text" name="cor" required="required"><br>
+                    
+                    <label>Novo Preço: </label>
+                    <input type="text" name="Preco" required="required"><br>
+        
+                    <label>Nova Marca: </label>
+                    <input type="text" name="marca" required="required"><br>
+                    
+                    <label>Nova Descrição: </label>
+                    <textarea cols="10" rows="20" id="descProd" name="descricao"></textarea>
+
+                    <div id="bt-cad-prod">
+                    <button type="submit">Atualizar</button>     
+        </div>
+        </form>
+                    </div>
+                </div>
+        
+</body>
+</html>
